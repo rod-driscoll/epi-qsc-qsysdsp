@@ -173,7 +173,7 @@ namespace QscQsysDspPlugin
 	/// <summary>
 	/// QSC DSP Join Map
 	/// </summary>
-	public class QscDspDeviceJoinMap : JoinMapBase
+	public class QscDspDeviceJoinMap : JoinMapBaseAdvanced
 	{
 		public uint IsOnline { get; set; }
         public uint IsPrimary { get; set; }
@@ -225,68 +225,75 @@ namespace QscQsysDspPlugin
 		public uint IncomingCallAccept { get; set; }
 		public uint IncomingCallReject { get; set; }
 
-		public QscDspDeviceJoinMap()
-		{
-			// Arrays
-			ChannelName = 200;
-			ChannelMuteToggle = 400;
-			ChannelMuteOn = 600;
-			ChannelMuteOff = 800;
-			ChannelVolume = 200;
-			ChannelVolumeUp = 1000;
-			ChannelVolumeDown = 1200;
-			ChannelType = 400;
-			Presets = 100;
-			ChannelVisible = 200;
+        public QscDspDeviceJoinMap(uint joinStart)
+            : base(joinStart)
+        {
+            InitialiseQscDspDeviceJoinMap();
+            OffsetJoinNumbers(joinStart);
+		}
 
-			// SIngleJoins
-			IsOnline = 1;
+        public void InitialiseQscDspDeviceJoinMap()
+        {
+            // Arrays
+            ChannelName = 200;
+            ChannelMuteToggle = 400;
+            ChannelMuteOn = 600;
+            ChannelMuteOff = 800;
+            ChannelVolume = 200;
+            ChannelVolumeUp = 1000;
+            ChannelVolumeDown = 1200;
+            ChannelType = 400;
+            Presets = 100;
+            ChannelVisible = 200;
+
+            // SIngleJoins
+            IsOnline = 1;
             IsPrimary = 2;
             IsSecondary = 3;
             IsActive = 4;
             IsInactive = 5;
             SimTxRx = 6;
             GetStatus = 2;
-			Prefix = 2;
-			Address = 1;
+            Prefix = 2;
+            Address = 1;
             DspName = 3;
-			Presets = 100;
-			DialStringCmd = 3100;
-			IncomingCall = 3100;
-			EndCall = 3107;
-			Keypad0 = 3110;
-			Keypad1 = 3111;
-			Keypad2 = 3112;
-			Keypad3 = 3113;
-			Keypad4 = 3114;
-			Keypad5 = 3115;
-			Keypad6 = 3116;
-			Keypad7 = 3117;
-			Keypad8 = 3118;
-			Keypad9 = 3119;
-			KeypadStar = 3120;
-			KeypadPound = 3121;
-			KeypadClear = 3122;
-			KeypadBackspace = 3123;
-			DoNotDisturbToggle = 3132;
-			DoNotDisturbOn = 3133;
-			DoNotDisturbOff = 3134;
-			AutoAnswerToggle = 3127;
-			AutoAnswerOn = 3125;
-			AutoAnswerOff = 3126;
-			Dial = 3124;
-			OffHook = 3130;
-			OnHook = 3129;
-			CallerIdNumberFb = 3104;
-			IncomingCallAccept = 3136;
-			IncomingCallReject = 3137;
-		}
+            Presets = 100;
+            DialStringCmd = 3100;
+            IncomingCall = 3100;
+            EndCall = 3107;
+            Keypad0 = 3110;
+            Keypad1 = 3111;
+            Keypad2 = 3112;
+            Keypad3 = 3113;
+            Keypad4 = 3114;
+            Keypad5 = 3115;
+            Keypad6 = 3116;
+            Keypad7 = 3117;
+            Keypad8 = 3118;
+            Keypad9 = 3119;
+            KeypadStar = 3120;
+            KeypadPound = 3121;
+            KeypadClear = 3122;
+            KeypadBackspace = 3123;
+            DoNotDisturbToggle = 3132;
+            DoNotDisturbOn = 3133;
+            DoNotDisturbOff = 3134;
+            AutoAnswerToggle = 3127;
+            AutoAnswerOn = 3125;
+            AutoAnswerOff = 3126;
+            Dial = 3124;
+            OffHook = 3130;
+            OnHook = 3129;
+            CallerIdNumberFb = 3104;
+            IncomingCallAccept = 3136;
+            IncomingCallReject = 3137;
+        }
 
-		public override void OffsetJoinNumbers(uint joinStart)
+		public void OffsetJoinNumbers(uint joinStart)
 		{
 			var joinOffset = joinStart - 1;
-			var properties = this.GetType().GetCType().GetProperties().Where(o => o.PropertyType == typeof(uint)).ToList();
-			foreach (var property in properties)
+            var properties = this.GetType().GetCType().GetProperties().Where(o => o.PropertyType == (CType)typeof(uint)).ToList();
+            foreach (var property in properties)
 			{
 				property.SetValue(this, (uint)property.GetValue(this, null) + joinOffset, null);
 			}

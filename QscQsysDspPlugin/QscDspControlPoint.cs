@@ -22,6 +22,7 @@ namespace QscQsysDspPlugin
 		/// <param name="muteInstanceTag">mute named control/instance tag</param>
 		/// <param name="parent">parent DSP instance</param>
 		protected QscDspControlPoint(string levelInstanceTag, string muteInstanceTag, QscDsp parent)
+			:base(levelInstanceTag)
 		{
 			LevelInstanceTag = levelInstanceTag;
 			MuteInstanceTag = muteInstanceTag;

@@ -7,7 +7,6 @@ using Crestron.SimplSharp.Reflection;
 using Crestron.SimplSharpPro.DeviceSupport;
 using Newtonsoft.Json;
 using PepperDash.Core;
-using PepperDash.Essentials.Bridges;
 using PepperDash.Essentials.Core.Bridges;
 using PepperDash.Essentials.Core;
 using PepperDash.Essentials.Core.Config;

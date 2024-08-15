@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QscQsysDspPlugin-v2.0.0", "QscQsysDspPlugin-v2.0.0.csproj", "{13F40D74-B2D9-416F-B398-DBB592FF5878}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13F40D74-B2D9-416F-B398-DBB592FF5878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F40D74-B2D9-416F-B398-DBB592FF5878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F40D74-B2D9-416F-B398-DBB592FF5878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F40D74-B2D9-416F-B398-DBB592FF5878}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B2102C6D-A18A-4802-8C23-C1CF07A61DDF}
+	EndGlobalSection
+EndGlobal

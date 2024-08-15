@@ -63,7 +63,7 @@ namespace QscQsysDspPlugin
 	/// <summary>
 	/// QSC DSP Camera control join map
 	/// </summary>
-	public class QscDspCameraDeviceJoinMap : JoinMapBase
+	public class QscDspCameraDeviceJoinMap : JoinMapBaseAdvanced
 	{
 
 		public uint Up { get; set; }
@@ -79,24 +79,31 @@ namespace QscQsysDspPlugin
 		public uint PrivacyOn { get; set; }
 		public uint PrivacyOff { get; set; }
 
-		public QscDspCameraDeviceJoinMap()
+        public QscDspCameraDeviceJoinMap(uint joinStart)
+            :base(joinStart)
 		{
-			// Arrays
-			Up = 1;
-			Down = 2;
-			Left = 3;
-			Right = 4;
-			ZoomIn = 5;
-			ZoomOut = 6;
-			Online = 9;
-			PresetRecallStart = 10;
-			PresetStoreStart = 30;
-			PresetNamesStart = 2;
-			PrivacyOn = 48;
-			PrivacyOff = 49;
+            InitialiseQscDspCameraDeviceJoinMap();
+            OffsetJoinNumbers(joinStart);
 		}
 
-		public override void OffsetJoinNumbers(uint joinStart)
+        public void InitialiseQscDspCameraDeviceJoinMap()
+        {
+            // Arrays
+            Up = 1;
+            Down = 2;
+            Left = 3;
+            Right = 4;
+            ZoomIn = 5;
+            ZoomOut = 6;
+            Online = 9;
+            PresetRecallStart = 10;
+            PresetStoreStart = 30;
+            PresetNamesStart = 2;
+            PrivacyOn = 48;
+            PrivacyOff = 49;
+        }
+
+		public void OffsetJoinNumbers(uint joinStart)
 		{
 			var joinOffset = joinStart - 1;
 			Up = Up + joinOffset;
